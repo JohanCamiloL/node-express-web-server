@@ -11,15 +11,10 @@ app.listen(PORT_NUMBER, () => {
 
 app.get('/books', (req, res) => {
     res.status(200);
-    res.json(fakeDatabase.getBooks);
+    res.json(fakeDatabase.getBooks());
 });
 
 app.get('/books/:bookName', (req, res) => {
     const { bookName } = req.params;
-
-    if (fakeDatabase.getBookByName(bookName)) {
-        res.json(fakeDatabase.getBookByName(bookName));
-    } else {
-        res.json({});
-    }
+    res.json(fakeDatabase.getBookByName(bookName) || {});
 });

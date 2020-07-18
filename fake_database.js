@@ -1,4 +1,4 @@
-const Book = require('./book').default;
+const Book = require('./book');
 
 const books = [];
 
