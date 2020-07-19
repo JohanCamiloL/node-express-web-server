@@ -6,8 +6,8 @@ const fakeDatabase = require('../config/fake_database');
  * @param {object} res Server response.
  */
 const getBooks = (req, res) => {
-    res.status(200);
-    res.json(fakeDatabase.getBooks());
+    res.status(200)
+        .json(fakeDatabase.getBooks());
 }
 
 /**
@@ -17,10 +17,22 @@ const getBooks = (req, res) => {
  */
 const getBookByName = (req, res) => {
     const { bookName } = req.params;
-    res.json(fakeDatabase.getBookByName(bookName) || {});
+    res.status(200)
+        .json(fakeDatabase.getBookByName(bookName) || {});
+}
+
+/**
+ * Show message when client requests the root page.
+ * @param {object} req Client request.
+ * @param {object} res Client response.
+ */
+const rootPage = (req, res) => {
+    res.status(200)
+        .send({ message: 'Welcome to the books library API' });
 }
 
 module.exports = {
     getBooks,
-    getBookByName
+    getBookByName,
+    rootPage
 };
