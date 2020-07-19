@@ -1,4 +1,4 @@
-const Book = require('./book');
+const Book = require('../model/book');
 
 const books = [];
 
